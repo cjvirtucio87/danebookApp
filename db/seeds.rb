@@ -48,7 +48,9 @@ puts "Seeding more users.."
               activated_at: rand(365).days.ago)
   user.build_profile({ first_name: first_name, last_name: last_name }).save
   3.times do
-    user.posts.create!(title: Faker::Lorem.words(2), body: Faker::Lorem.paragraph(5))
+    post = user.posts.new(title: Faker::Lorem.words(2), body: Faker::Lorem.paragraph(5))
+    post.activity_owner = user
+    post.save
   end
   3.times do
     random = [:first, :second, :third].sample

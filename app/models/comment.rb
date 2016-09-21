@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: :user
+
   belongs_to :user
 
   belongs_to :commentable, polymorphic: true

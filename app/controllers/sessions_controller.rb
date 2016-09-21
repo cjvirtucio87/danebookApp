@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def new
   end
-  
+
   def create
     @profile = @user.profile
     log_in @user
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  private 
+  private
     def set_user
       @user = User.find_by(email: params[:session][:email])
     end

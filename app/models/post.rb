@@ -1,7 +1,10 @@
 class Post < ActiveRecord::Base
+  # public activities
+  include PublicActivity::Model
+  tracked owner: :user
 
   scope :desc, -> { order(created_at: :desc) }
-  
+
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
